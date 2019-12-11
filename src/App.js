@@ -1,18 +1,16 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
-import SelectionSort from './components/SelectionSort.js'
+import SortCollection from './components/SortCollection.js'
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-      </header>
-      <div className="mainLayout">
-        <SelectionSort></SelectionSort>
-      </div>
-    </div>
+    <header className="App-header">
+      <img src={logo} className="App-logo" alt="logo" />
+    </header>
+    <SortCollection></SortCollection>
+  </div>
   );
 }
 

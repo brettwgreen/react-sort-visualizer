@@ -12,20 +12,16 @@ class SelectionSort extends Component {
       swapCount: 0,
       _smallest: 0,
       _smallestIndex: 0
-    }
+    };
     this.handleDelayChange = this.handleChange.bind(this);
   }
-
-  init = () => {
-    this.setSortData(this.getRandomArray());
+  
+  handleChange = (event) => {
+    this.setState({delay: event.target.value});
   }
 
   componentDidMount = () => {
-    this.init();
-  }
-
-  handleChange = (event) => {
-    this.setState({delay: event.target.value});
+    this.setSortData(this.props.getSortData());
   }
 
   actualHits = () => {
@@ -36,31 +32,8 @@ class SelectionSort extends Component {
     return total;
   }
 
-  getRandomArray = () => {
-    var count = 0;
-    var nums = [];
-    while (count < this.state.numberOfElements) {
-      var num = Math.ceil(Math.random() * this.state.numberOfElements);
-      if (!nums.includes(num)) {
-        nums.push(num);
-        count++;
-      }
-    }
-    console.log("numbers: " + nums.length);
-    return nums;
-  }
-
-  setSortData = (values) => {
-    var sObjects = [];
-    for (var i=0; i<values.length; i++) {
-      sObjects.push({
-        value: values[i],
-        inspecting: false,
-        currentStart: false,
-        hitCount: 0
-      });
-    };
-    this.setState({sortObjects: sObjects, actualHits: 0, swapCount: 0});
+  setSortData = (sortObjects) => {
+    this.setState({sortObjects: sortObjects, actualHits: 0, swapCount: 0});
   }
 
   swap = (targetIndex, sourceIndex) => {
