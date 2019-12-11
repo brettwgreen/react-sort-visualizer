@@ -13,7 +13,6 @@ class SortCollection extends Component {
 
   getSortData = () => {
     const values = this.state.currentSortAlgorithm();
-    console.log("Setting values: " + values.length);
     var sObjects = [];
     for (var i=0; i<values.length; i++) {
       sObjects.push({
