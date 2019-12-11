@@ -8,7 +8,7 @@ class SelectionSort extends Component {
       numberOfElements: 50,
       sortObjects: [],
       delay: 10,
-      averageHits: 0,
+      actualHits: 0,
       swapCount: 0,
       _smallest: 0,
       _smallestIndex: 0
@@ -60,7 +60,7 @@ class SelectionSort extends Component {
         hitCount: 0
       });
     };
-    this.setState({sortObjects: sObjects});
+    this.setState({sortObjects: sObjects, actualHits: 0, swapCount: 0});
   }
 
   swap = (targetIndex, sourceIndex) => {
@@ -81,7 +81,7 @@ class SelectionSort extends Component {
     newSortObjects[i].inspecting = false;
     if (i + 1 <= newSortObjects.length - 1) {
       newSortObjects[i + 1].inspecting = true;
-      this.setState({sortObjects: newSortObjects});
+      this.setState({sortObjects: newSortObjects, actualHits: this.state.actualHits + 1});
       setTimeout(() => {this.checkSmallest(i+1)}, this.state.delay);
     } else {
       this.completeSelectionSortFrom();
@@ -145,7 +145,14 @@ class SelectionSort extends Component {
             <label>Worst:</label><div className="sortData">O(<i>n</i><sup>2</sup>)</div>
             <label>Best:</label><div className="sortData">O(<i>n</i><sup>2</sup>)</div>
           </fieldset>
+          <br />
+          <fieldset>
+            <legend>Actuals</legend>
+            <label>Visited:</label><div className="sortData">{this.state.actualHits}</div>
+            <label>Swapped:</label><div className="sortData">{this.state.swapCount}</div>
+          </fieldset>
         </div>
+        <br />
         <div className="sortPanel">
           <br clear="all" /><br />
           <label htmlFor="delay">delay</label>: <input id="delay" type="text" 
