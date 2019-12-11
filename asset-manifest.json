@@ -1,23 +1,23 @@
 {
   "files": {
-    "main.css": "/react-gh-pages/static/css/main.f1e51148.chunk.css",
-    "main.js": "/react-gh-pages/static/js/main.c3fe9149.chunk.js",
-    "main.js.map": "/react-gh-pages/static/js/main.c3fe9149.chunk.js.map",
-    "runtime-main.js": "/react-gh-pages/static/js/runtime-main.b3a8b867.js",
-    "runtime-main.js.map": "/react-gh-pages/static/js/runtime-main.b3a8b867.js.map",
-    "static/js/2.d8004e9f.chunk.js": "/react-gh-pages/static/js/2.d8004e9f.chunk.js",
-    "static/js/2.d8004e9f.chunk.js.map": "/react-gh-pages/static/js/2.d8004e9f.chunk.js.map",
-    "index.html": "/react-gh-pages/index.html",
-    "precache-manifest.09b4044fa184091e8ef6a04a1509dafd.js": "/react-gh-pages/precache-manifest.09b4044fa184091e8ef6a04a1509dafd.js",
-    "service-worker.js": "/react-gh-pages/service-worker.js",
-    "static/css/main.f1e51148.chunk.css.map": "/react-gh-pages/static/css/main.f1e51148.chunk.css.map",
-    "static/js/2.d8004e9f.chunk.js.LICENSE": "/react-gh-pages/static/js/2.d8004e9f.chunk.js.LICENSE",
-    "static/media/logo.svg": "/react-gh-pages/static/media/logo.5d5d9eef.svg"
+    "main.css": "/react-sort-visualizer/static/css/main.f1e51148.chunk.css",
+    "main.js": "/react-sort-visualizer/static/js/main.e9edec5d.chunk.js",
+    "main.js.map": "/react-sort-visualizer/static/js/main.e9edec5d.chunk.js.map",
+    "runtime-main.js": "/react-sort-visualizer/static/js/runtime-main.15359608.js",
+    "runtime-main.js.map": "/react-sort-visualizer/static/js/runtime-main.15359608.js.map",
+    "static/js/2.d8004e9f.chunk.js": "/react-sort-visualizer/static/js/2.d8004e9f.chunk.js",
+    "static/js/2.d8004e9f.chunk.js.map": "/react-sort-visualizer/static/js/2.d8004e9f.chunk.js.map",
+    "index.html": "/react-sort-visualizer/index.html",
+    "precache-manifest.26c85d381a0ba0b3dcdfc40df53116e8.js": "/react-sort-visualizer/precache-manifest.26c85d381a0ba0b3dcdfc40df53116e8.js",
+    "service-worker.js": "/react-sort-visualizer/service-worker.js",
+    "static/css/main.f1e51148.chunk.css.map": "/react-sort-visualizer/static/css/main.f1e51148.chunk.css.map",
+    "static/js/2.d8004e9f.chunk.js.LICENSE": "/react-sort-visualizer/static/js/2.d8004e9f.chunk.js.LICENSE",
+    "static/media/logo.svg": "/react-sort-visualizer/static/media/logo.5d5d9eef.svg"
   },
   "entrypoints": [
-    "static/js/runtime-main.b3a8b867.js",
+    "static/js/runtime-main.15359608.js",
     "static/js/2.d8004e9f.chunk.js",
     "static/css/main.f1e51148.chunk.css",
-    "static/js/main.c3fe9149.chunk.js"
+    "static/js/main.e9edec5d.chunk.js"
   ]
 }
