@@ -21,6 +21,10 @@ class SelectionSort extends Component {
   }
 
   componentDidMount = () => {
+    this.scramble();
+  }
+
+  scramble = () => {
     this.setSortData(this.props.getSortData());
   }
 
@@ -133,7 +137,7 @@ class SelectionSort extends Component {
             onChange={this.handleDelayChange}/>
           <br /><br />
           <button onClick={this.sort}>sort</button><br /><br />
-          <button onClick={this.init}>scramble</button>
+          <button onClick={this.scramble}>scramble</button>
         </div>
       </div>
     );

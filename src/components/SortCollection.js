@@ -100,19 +100,6 @@ class SortCollection extends Component {
     return (
       <div className="mainLayout">
         <SelectionSort getSortData={this.getSortData}></SelectionSort>
-        <div className="masterButtons">
-          <br clear="all" /><br />
-          <button onClick={this.scrambleAll}>scramble all</button>
-          <br clear="all" /><br />
-          <button onClick={this.setAscending}>set all sorted</button>
-          <br clear="all" /><br />		
-          <button onClick={this.setDescending}>set all inverted</button>
-          <br clear="all" /><br />
-          <button onClick={this.setNearlySorted}>set all nearly sorted</button>
-          <br clear="all" /><br />
-          <button onClick={this.startAll} id="mainSort">sort all</button>
-          <br clear="all" /><br />
-        </div>
       </div>
     );
   }
