@@ -16,19 +16,19 @@ class SelectionSort extends Component {
     this.handleDelayChange = this.handleChange.bind(this);
   }
 
-  init() {
+  init = () => {
     this.setSortData(this.getRandomArray());
   }
 
-  componentDidMount() {
+  componentDidMount = () => {
     this.init();
   }
 
-  handleChange(event) {
+  handleChange = (event) => {
     this.setState({delay: event.target.value});
   }
 
-  actualHits() {
+  actualHits = () => {
     var total = 0;
     for (var i=0; i<this.values.length; i++){
       total += this.values[i].hitCount;
@@ -36,7 +36,7 @@ class SelectionSort extends Component {
     return total;
   }
 
-  getRandomArray() {
+  getRandomArray = () => {
     var count = 0;
     var nums = [];
     while (count < this.state.numberOfElements) {
@@ -50,7 +50,7 @@ class SelectionSort extends Component {
     return nums;
   }
 
-  setSortData(values) {
+  setSortData = (values) => {
     var sObjects = [];
     for (var i=0; i<values.length; i++) {
       sObjects.push({
@@ -63,73 +63,80 @@ class SelectionSort extends Component {
     this.setState({sortObjects: sObjects});
   }
 
-  swap(targetIndex, sourceIndex) {
+  swap = (targetIndex, sourceIndex) => {
     if (targetIndex !== sourceIndex) {
-      this.swapCount++;
-      var tempValue = this.sortObjects[targetIndex].value;
-      this.sortObjects[targetIndex].value = this.sortObjects[sourceIndex].value;
-      this.sortObjects[sourceIndex].value = tempValue;
+      const newSortObjects = this.state.sortObjects.slice();
+      var tempValue = newSortObjects[targetIndex].value;
+      newSortObjects[targetIndex].value = newSortObjects[sourceIndex].value;
+      newSortObjects[sourceIndex].value = tempValue;
+      this.setState({sortObjects: newSortObjects, swapCount: this.state.swapCount + 1 })
     }
   }
 
-  checkSmallest(i) {
-    if (this.sortObjects[i].value < this._smallest) {
-      this._smallest = this.sortObjects[i].value;
-      this._smallestIndex = i;
+  checkSmallest = (i) => {
+    if (this.state.sortObjects[i].value < this.state._smallest) {
+      this.setState({_smallest: this.state.sortObjects[i].value, _smallestIndex: i})
     }
-    this.sortObjects[i].inspecting = false;
-    if (i + 1 <= this.sortObjects.length - 1) {
-      this.sortObjects[i + 1].inspecting = true;
-      setTimeout(this.checkSmallest, this.delay, i + 1);
+    const newSortObjects = this.state.sortObjects.slice();
+    newSortObjects[i].inspecting = false;
+    if (i + 1 <= newSortObjects.length - 1) {
+      newSortObjects[i + 1].inspecting = true;
+      this.setState({sortObjects: newSortObjects});
+      setTimeout(() => {this.checkSmallest(i+1)}, this.state.delay);
     } else {
       this.completeSelectionSortFrom();
     }
   }
 
-  startSelectionSortFrom(i) {
-    if (i > this.sortObjects.length - 1) {
+  startSelectionSortFrom = (i) => {
+    if (i > this.state.sortObjects.length - 1) {
       return;
     }
-    this._smallestIndex = i;
-    this._startingIndex = i;
-    this._smallest = this.sortObjects[this._smallestIndex].value;
-    this.sortObjects[this._startingIndex].inspecting = true;
-    this.sortObjects[this._startingIndex].currentStart = true;
-    setTimeout(this.checkSmallest, this.delay, this._startingIndex);
+    const newSortObjects = this.state.sortObjects.slice();
+    newSortObjects[i].inspecting = true;
+    newSortObjects[i].currentStart = true;
+    this.setState({
+      _smallestIndex: i,
+      _startingIndex: i,
+      _smallest: this.state.sortObjects[i].value,
+      sortObjects: newSortObjects
+    });
+    setTimeout(() => {this.checkSmallest(this.state._startingIndex)}, this.state.delay);
   }
 
-  completeSelectionSortFrom() {
-    this.swap(this._startingIndex, this._smallestIndex);
-    this.sortObjects[this._startingIndex].currentStart = false;
-    this.startSelectionSortFrom(this._startingIndex + 1);
+  completeSelectionSortFrom = () => {
+    this.swap(this.state._startingIndex, this.state._smallestIndex);
+    const newSortObjects = this.state.sortObjects.slice();
+    newSortObjects[this.state._startingIndex].currentStart = false;
+    this.setState({sortObjects: newSortObjects});
+    this.startSelectionSortFrom(this.state._startingIndex + 1);
   }
 
-  sort() {
+  sort = () => {
     console.log("started selectionsort at " + new Date());
-    // reset hit counts
-    this.swapCount = 0;
-    for (var k=0; k<this.sortObjects.length; k++){
-      this.sortObjects[k].hitCount = 0;
-    }
+    this.setState({swapCount:  0});
     this.startSelectionSortFrom(0);
   }
 
 
-  render() {
+  render = () => {
     return (
       <div id="selectionSort" className="sortGroup">
         <div className="data">
-          {this.state.sortObjects.map ((item, index) => {
-            const itemStyle = {
-              width: item.value+10 + 'px',
-            };
-            var indicatorState = 'indicator ' + item.currentStart ? 'show' : 'hide';
-            return <span key={index}>
-              <div className="unit {item.inspecting ? 'inspecting' : ''}" style={itemStyle}></div>
-              <div className={indicatorState}></div>
-              <div className="clear"></div>
-            </span>
-            })}
+          {
+            this.state.sortObjects.map ((item, index) => {
+              const itemStyle = {
+                width: item.value+10 + 'px',
+              };
+              const indicatorState = 'indicator ' + (item.currentStart ? 'show' : 'hide');
+              const inspecting = 'unit ' + (item.inspecting ? 'inspecting' : '');
+              return <span key={index}>
+                <div className={inspecting} style={itemStyle}></div>
+                <div className={indicatorState}></div>
+                <div className="clear"></div>
+              </span>
+            })
+          }
         </div>
         <div className="sortInfo">
           <fieldset>
@@ -146,7 +153,7 @@ class SelectionSort extends Component {
             onChange={this.handleDelayChange}/>
           <br /><br />
           <button onClick={this.sort}>sort</button><br /><br />
-          <button onClick={this.init}></button>
+          <button onClick={this.init}>scramble</button>
         </div>
       </div>
     );
