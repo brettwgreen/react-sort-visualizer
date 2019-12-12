@@ -1,10 +1,10 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "bc5616edb3f8bbc5670b95aa7675dced",
+    "revision": "ca3553893be79b5226f291ec5ae7c4c2",
     "url": "/react-sort-visualizer/index.html"
   },
   {
-    "revision": "eae2edd774044ee7da31",
+    "revision": "5526915dd26356078fc0",
     "url": "/react-sort-visualizer/static/css/main.f1e51148.chunk.css"
   },
   {
@@ -16,8 +16,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/react-sort-visualizer/static/js/2.d8004e9f.chunk.js.LICENSE"
   },
   {
-    "revision": "eae2edd774044ee7da31",
-    "url": "/react-sort-visualizer/static/js/main.d9a1e38f.chunk.js"
+    "revision": "5526915dd26356078fc0",
+    "url": "/react-sort-visualizer/static/js/main.c28dcdd1.chunk.js"
   },
   {
     "revision": "1b3db4913adfc2d14f25",
